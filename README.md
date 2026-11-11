@@ -6,7 +6,7 @@ An English-language p5.js art game with a low-resolution, early-PC-game interfac
 
 Open index.html directly, or download and extract BECOMING_DATA_demo.zip. For camera access, serve the folder on localhost or use the HTTPS GitHub Pages site. Libraries are bundled locally; no CDN is required.
 
-- Click the floor to walk. Click a computer itself, a floating machine label or a bottom thumbnail to select an experiment. Each machine opens at a visible preset strength and plays a preview sweep. The Preview/Applied label identifies the state.
+- Click the floor to walk. Click a computer itself, a floating machine label or a bottom thumbnail to select an experiment. Sort starts at 0 on the initial visit and after Reset; other machines open at preset strengths. Selecting a machine plays a preview sweep. The Preview/Applied label identifies the state.
 - Move the slider to preview an experiment on both the image and the walking avatar.
 - Press **Apply to me** to commit. The processed image becomes the next machine's input, and the avatar keeps its geometric/material transformation while moving.
 - Applied transformations accumulate, up to eight retained body operations. Walking after an application leaves temporary data fragments behind.
@@ -25,6 +25,10 @@ Open index.html directly, or download and extract BECOMING_DATA_demo.zip. For ca
 The top bar contains sound, help, a labeled Board toggle, and fullscreen. The in-game board starts hidden so the game uses the full width. Open it with Board and close it with Board again or its X button. Keeping a head does not open the board. Hiding the board never removes saved heads. This optional digital board is separate from the physical exhibition board for printed heads. Sound starts muted; click the top music-note button to enable the original synthesized sound pack. Help includes a volume slider. Button hover/click, footsteps, seven machine signatures, processing, collection, capture, file loading and printing have different sounds. Muting cancels scheduled voices, Pause stops active sounds and footsteps, and hidden tabs suspend audio. Reduced-motion preferences start the animation paused.
 
 Changing the avatar or importing/capturing a new source starts a new body. Reset clears the current input, body transformations, video, and session fragments, and starts a new visitor. It does not clear the Visitors Board. This is an interactive art scene; movement uses direct targets rather than collision-aware pathfinding.
+
+## Movement and room view
+
+The room uses the original close scale and fills the viewport, with a smooth camera that keeps the avatar centred and full-size interface controls. Movement runs on elapsed time with eased acceleration and stopping, at a target of 30 rendered frames per second. Static room geometry and depth/colour buffers are cached whenever the camera is stationary. Experiment timing remains independent of render frame rate.
 
 ## Concept
 
